@@ -1,16 +1,19 @@
 <%= form_for(@task) do |f| %>
   <%= f.label :title %>
+  <br>
   <%= f.text_field :title %>
-
+  <br>
   <%= f.label :details %>
+  <br>
   <%= f.text_field :details %>
-
-  <%= f.label :completed %>
-  <%= f.text_field :completed %>
-
-  <input type="checkbox" id="completed" name="completed">
-
+  <br>
+  <% if @task.completed == true %>
+      <p><input type="checkbox" id="completed" value="true" checked> This task is not completed yet</p>
+      <% else %>
+      <p><input type="checkbox" id="completed" value="false"> Completed</p>
+      <% end %>
   <%= f.submit %>
+
 <% end %>
 
 <%= link_to "Go back to task list", tasks_path %>
